@@ -1,8 +1,10 @@
 <script lang="ts">
-	const setPossibilities = [1, 2, 3, 4, 5] as const;
-	let sets: typeof setPossibilities[number] = 3;
-	let timePerSet = 35;
-	let restTime = 90;
+	const setPossibilities = [
+		1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+	] as const;
+	let sets: number;
+	let timePerSet: number;
+	let restTime: number;
 	$: redirectUrl = `workout/${sets}/${timePerSet}/${restTime}`;
 </script>
 
@@ -13,13 +15,7 @@
 			<p>Target sets</p>
 			<div class="dropdown">
 				<!-- svelte-ignore a11y-label-has-associated-control -->
-				<label tabindex="0" class="btn m-1 bg-[#2A303C]">{sets}</label>
-				<ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box">
-					{#each setPossibilities as set}
-						<!-- svelte-ignore a11y-missing-attribute -->
-						<li><a>{set}</a></li>
-					{/each}
-				</ul>
+				<input type="number" bind:value={sets} class="input w-20 max-w-xs" />
 			</div>
 		</div>
 		<div class="flex items-center space-x-3 text-lg">
